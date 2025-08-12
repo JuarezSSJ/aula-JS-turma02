@@ -10,6 +10,35 @@
 <body>
 
     <script>
+        let quantIngressos = parseInt(prompt("Quantos ingressos você deseja comprar?"));
+        //valor total gasto pelo visitante
+        let total = 0;
+        const precoNormal = 50;
+        const precoMeia = 25;
+
+        for(let i = 1; i <= quantIngressos; i++){
+            //coleta idade do visitante
+            let idade = parseInt(prompt(`Ingresso ${i} - Qual a idade do visitante?`));
+            //variavel estudante
+            let estudante = false;
+
+            if(idade > 12 && idade < 60){
+                let respostaEstudante = prompt(`Ingresso ${i} - O visitante é um estudante? (sim / não)`).toLowerCase();
+                estudante = respostaEstudante === "sim" || respostaEstudante === "s";
+            }
+
+            let preco = precoNormal;
+
+            if(idade < 2){
+                preco = 0;
+            }else if(idade <=12 || idade >= 60 || estudante){
+                preco = precoMeia
+            }
+
+            total += preco;
+        }
+
+        alert(`Total a pagar por ${quantIngressos} ingressos: R$ ${total.toFixed(2)}`);
 
     </script>
 
